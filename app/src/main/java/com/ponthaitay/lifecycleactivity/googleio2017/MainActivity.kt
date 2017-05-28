@@ -8,7 +8,7 @@ class MainActivity : BaseLifecycleActivity() {
 
     private val TAG = javaClass.simpleName
 
-    internal var locationManager: LocationManager? = null
+    var locationManager: LocationManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
