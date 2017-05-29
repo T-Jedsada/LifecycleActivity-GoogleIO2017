@@ -1,4 +1,4 @@
-package com.ponthaitay.lifecycleactivity.googleio2017
+package com.ponthaitay.lifecycleactivity.googleio2017.livedata.kotlincode
 
 import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.LifecycleRegistryOwner
