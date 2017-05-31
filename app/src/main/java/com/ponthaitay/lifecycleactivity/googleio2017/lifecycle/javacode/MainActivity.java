@@ -27,7 +27,7 @@ public class MainActivity extends BaseLifecycleActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_lifecycle);
         locationManager = new MyLocationManager(this, getLifecycle(), new MyLocationManager.MyLocationListener() {
 
             @SuppressLint("DefaultLocale")

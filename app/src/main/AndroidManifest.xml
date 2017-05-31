@@ -22,6 +22,10 @@
         </activity>
         <activity android:name=".lifecycle.kotlincode.MainActivity" />
         <activity android:name=".livedata.kotlincode.MainLiveDataActivity" />
+        <activity android:name=".viewmodel.kotlincode.MainActivity" />
+        <activity android:name=".viewmodel.javacode.MainActivity" />
+        <activity android:name=".room.javacode.MainActivity" />
+        <activity android:name=".room.kotlincode.MainActivity"></activity>
     </application>
 
 </manifest>

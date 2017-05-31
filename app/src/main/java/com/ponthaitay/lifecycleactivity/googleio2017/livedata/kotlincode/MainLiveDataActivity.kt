@@ -22,7 +22,7 @@ class MainLiveDataActivity : BaseLifecycleActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_room)
+        setContentView(R.layout.activity_main_live_data)
         container = findViewById(R.id.container)
         tvResult = findViewById(R.id.tv_result) as TextView?
 
