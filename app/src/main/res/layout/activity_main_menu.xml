@@ -24,6 +24,15 @@
         android:textAllCaps="false" />
 
     <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_view_model_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="ViewModel"
+        android:textAllCaps="false" />
+
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_room_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -20,12 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".lifecycle.kotlincode.MainActivity" />
+        <activity android:name=".lifecycle.kotlincode.MainLifecycleActivity" />
+        <activity android:name=".lifecycle.javacode.MainLifecycleActivity" />
         <activity android:name=".livedata.kotlincode.MainLiveDataActivity" />
-        <activity android:name=".viewmodel.kotlincode.MainActivity" />
-        <activity android:name=".viewmodel.javacode.MainActivity" />
-        <activity android:name=".room.javacode.MainActivity" />
-        <activity android:name=".room.kotlincode.MainActivity"></activity>
+        <activity android:name=".livedata.javacode.MainLiveDataActivity" />
+        <activity android:name=".viewmodel.kotlincode.MainViewModelActivity" />
+        <activity android:name=".viewmodel.javacode.MainViewModelActivity" />
+        <activity android:name=".room.kotlincode.MainRoomActivity" />
     </application>
 
 </manifest>

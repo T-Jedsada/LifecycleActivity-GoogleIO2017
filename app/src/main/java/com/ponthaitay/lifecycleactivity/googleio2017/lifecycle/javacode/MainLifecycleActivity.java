@@ -1,12 +1,12 @@
-package com.ponthaitay.lifecycleactivity.googleio2017.livedata.javacode;
+package com.ponthaitay.lifecycleactivity.googleio2017.lifecycle.javacode;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.Observer;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.karumi.dexter.Dexter;
@@ -19,12 +19,40 @@ import com.ponthaitay.lifecycleactivity.googleio2017.R;
 
 import java.util.List;
 
-public class MainLiveDataActivity extends BaseLifecycleActivity {
+public class MainLifecycleActivity extends BaseLifecycleActivity {
+
+    private static final String TAG = MainLifecycleActivity.class.getName();
+    private MyLocationManager locationManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_live_data);
+        setContentView(R.layout.activity_main_lifecycle);
+        locationManager = new MyLocationManager(this, getLifecycle(), new MyLocationManager.MyLocationListener() {
+
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onLocationChange(Location location) {
+                Log.d(TAG, location.toString());
+                String result = String.format("%f / %f", location.getLatitude(), location.getLongitude());
+                ((TextView) findViewById(R.id.tv_result)).setText(result);
+            }
+
+            @Override
+            public void onProviderDisabled(String msg) {
+                Log.d(TAG, msg);
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+                Log.d(TAG, provider);
+            }
+        });
+
+        checkPermissionLocation();
+    }
+
+    private void checkPermissionLocation() {
         Dexter.withActivity(this)
                 .withPermissions(Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -32,17 +60,7 @@ public class MainLiveDataActivity extends BaseLifecycleActivity {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
                         if (!hasDeniedPermission(report)) {
-                            MyLocationManager locationManager = new MyLocationManager(MainLiveDataActivity.this);
-                            locationManager.observe(MainLiveDataActivity.this, new Observer<Location>() {
-                                @Override
-                                public void onChanged(@Nullable Location location) {
-                                    if (location != null) {
-                                        @SuppressLint("DefaultLocale")
-                                        String result = String.format("%f / %f", location.getLatitude(), location.getLongitude());
-                                        ((TextView) findViewById(R.id.tv_result)).setText(result);
-                                    }
-                                }
-                            });
+                            locationManager.locationEnable();
                         } else {
                             Snackbar.make(findViewById(R.id.container), report.toString(), Snackbar.LENGTH_SHORT).show();
                         }
