@@ -32,12 +32,16 @@ dependencies {
     compile 'com.android.support:appcompat-v7:' + rootProject.androidSupportVersion
     compile 'com.android.support:design:' + rootProject.androidSupportVersion
     testCompile 'junit:junit:4.12'
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion
     annotationProcessor 'android.arch.lifecycle:compiler:' + rootProject.archLifecycleVersion
+
     compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion
     compile 'android.arch.persistence.room:rxjava2:' + rootProject.archRoomVersion
     annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+    kapt 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+
     compile('com.karumi:dexter:4.1.0') {
         exclude group: 'com.android.support:design'
     }

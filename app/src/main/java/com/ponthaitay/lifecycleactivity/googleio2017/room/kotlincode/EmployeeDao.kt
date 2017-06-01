@@ -1,6 +1,7 @@
 package com.ponthaitay.lifecycleactivity.googleio2017.room.kotlincode
 
 import android.arch.persistence.room.*
+import io.reactivex.Flowable
 
 @Dao
 interface EmployeeDao {
@@ -14,6 +15,7 @@ interface EmployeeDao {
     @Update
     fun updateEmployee(id: Int)
 
-    @Query("SELECT * FROM stud WHERE kkkkk = :id")
-    fun queryEmployee(id: Int): List<EmployeeEntity>
+    @Query("SELECT * FROM employee " +
+            "WHERE employee.firstName = :arg0")
+    fun queryEmployee(firstName: String?): Flowable<List<EmployeeEntity>>
 }

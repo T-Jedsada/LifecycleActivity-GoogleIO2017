@@ -5,5 +5,5 @@ import android.arch.persistence.room.RoomDatabase
 
 @Database(entities = arrayOf(EmployeeEntity::class), version = 1)
 abstract class EmployeeDatabase : RoomDatabase() {
-    abstract fun studentDao(): EmployeeDao
+    abstract fun employeeDao(): EmployeeDao
 }

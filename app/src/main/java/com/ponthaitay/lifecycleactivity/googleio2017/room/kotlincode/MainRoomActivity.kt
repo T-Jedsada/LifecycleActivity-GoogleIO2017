@@ -1,5 +1,7 @@
 package com.ponthaitay.lifecycleactivity.googleio2017.room.kotlincode
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.arch.persistence.room.Room
 import android.os.Bundle
 import android.util.Log
@@ -13,14 +15,23 @@ class MainRoomActivity : BaseLifecycleActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main_room)
         employeeDB = Room.databaseBuilder(this, EmployeeDatabase::class.java, "employee_db").build()
+        val dao = employeeDB?.employeeDao()
 
-        val jedsadaEmpolyee = EmployeeEntity(1, "Jedsada", "Tiwongvorakul")
+        val jedsadaEmpolyee = EmployeeEntity()
+        jedsadaEmpolyee.firstName = "test"
+        jedsadaEmpolyee.lastName = "test"
 
-        employeeDB?.studentDao()?.insertEmployee(jedsadaEmpolyee)
-        val studentQuery = employeeDB?.studentDao()?.queryEmployee(1)
+        val employeeModel = ViewModelProviders.of(this).get(EmployeeViewModel::class.java)
 
-        Log.e(TAG, "$studentQuery")
+        employeeModel.insertStudent(dao, jedsadaEmpolyee)
+        employeeModel.getStudentById(dao, jedsadaEmpolyee.firstName)
+                .observe(this, Observer { setResultQueryEmployee(it) })
+    }
+
+    fun setResultQueryEmployee(list: List<EmployeeEntity>?) {
+        Log.d(TAG, "$list")
     }
 }
