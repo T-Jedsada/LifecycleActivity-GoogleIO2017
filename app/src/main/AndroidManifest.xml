@@ -27,6 +27,7 @@
         <activity android:name=".viewmodel.kotlincode.MainViewModelActivity" />
         <activity android:name=".viewmodel.javacode.MainViewModelActivity" />
         <activity android:name=".room.kotlincode.MainRoomActivity" />
+        <activity android:name=".room.javacode.MainRoomActivity" />
     </application>
 
 </manifest>

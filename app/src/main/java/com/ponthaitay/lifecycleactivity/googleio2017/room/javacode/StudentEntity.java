@@ -4,7 +4,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
-public class StudentData {
+public class StudentEntity {
 
     @PrimaryKey
     private int id;
