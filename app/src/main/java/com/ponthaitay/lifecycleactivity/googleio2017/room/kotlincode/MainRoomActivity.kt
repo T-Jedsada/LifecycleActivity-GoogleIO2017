@@ -15,19 +15,18 @@ class MainRoomActivity : BaseLifecycleActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main_room)
         employeeDB = Room.databaseBuilder(this, EmployeeDatabase::class.java, "employee_db").build()
         val dao = employeeDB?.employeeDao()
 
         val jedsadaEmpolyee = EmployeeEntity()
-        jedsadaEmpolyee.firstName = "test"
-        jedsadaEmpolyee.lastName = "test"
+        jedsadaEmpolyee.age = 1
+        jedsadaEmpolyee.name = "test"
 
         val employeeModel = ViewModelProviders.of(this).get(EmployeeViewModel::class.java)
 
         employeeModel.insertStudent(dao, jedsadaEmpolyee)
-        employeeModel.getStudentById(dao, jedsadaEmpolyee.firstName)
+        employeeModel.getStudentById(dao, jedsadaEmpolyee.name)
                 .observe(this, Observer { setResultQueryEmployee(it) })
     }
 

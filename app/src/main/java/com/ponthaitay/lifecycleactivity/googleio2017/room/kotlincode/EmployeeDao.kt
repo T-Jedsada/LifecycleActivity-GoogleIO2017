@@ -16,6 +16,6 @@ interface EmployeeDao {
     fun updateEmployee(id: Int)
 
     @Query("SELECT * FROM employee " +
-            "WHERE employee.firstName = :arg0")
+            "WHERE employee.name = :arg0")
     fun queryEmployee(firstName: String?): Flowable<List<EmployeeEntity>>
 }
