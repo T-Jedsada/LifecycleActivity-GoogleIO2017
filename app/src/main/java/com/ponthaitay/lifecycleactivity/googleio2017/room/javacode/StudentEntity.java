@@ -1,14 +1,17 @@
 package com.ponthaitay.lifecycleactivity.googleio2017.room.javacode;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "student")
 public class StudentEntity {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "first_name")
     private String firstName;
+    @ColumnInfo(name = "last_name")
     private String lastName;
 
     public int getId() {

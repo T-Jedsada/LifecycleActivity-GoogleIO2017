@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.ponthaitay.lifecycleactivity.googleio2017.lifecycle.kotlincode.MainLifecycleActivity
 import com.ponthaitay.lifecycleactivity.googleio2017.livedata.kotlincode.MainLiveDataActivity
-import com.ponthaitay.lifecycleactivity.googleio2017.room.kotlincode.MainRoomActivity
+import com.ponthaitay.lifecycleactivity.googleio2017.room.javacode.MainRoomActivity
 import com.ponthaitay.lifecycleactivity.googleio2017.viewmodel.kotlincode.MainViewModelActivity
 
 open class MainMenuActivity : AppCompatActivity(), View.OnClickListener {

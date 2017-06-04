@@ -8,14 +8,12 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 
-import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
-
 @Dao
 public interface StudentDao {
 
-    @Insert(onConflict = REPLACE)
+    @Insert()
     void insertStudent(StudentEntity studentEntity);
 
-    @Query("SELECT * FROM studententity WHERE id = :id")
+    @Query("SELECT * FROM student WHERE id = :id")
     Flowable<List<StudentEntity>> queryStudent(int id);
 }

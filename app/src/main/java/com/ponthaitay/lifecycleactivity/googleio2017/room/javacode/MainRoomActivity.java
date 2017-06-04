@@ -6,12 +6,13 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.ponthaitay.lifecycleactivity.googleio2017.R;
 
 import java.util.List;
+
+import io.reactivex.annotations.Nullable;
 
 public class MainRoomActivity extends BaseLifecycleActivity {
 
@@ -24,7 +25,8 @@ public class MainRoomActivity extends BaseLifecycleActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_room);
 
-        final StudentDatabase db = Room.databaseBuilder(this, StudentDatabase.class, "student_db").build();
+        final StudentDatabase db = Room.databaseBuilder(this, StudentDatabase.class,
+                "studentdatabase").build();
 
         final StudentEntity entity = new StudentEntity();
         entity.setId(1);
@@ -32,11 +34,11 @@ public class MainRoomActivity extends BaseLifecycleActivity {
         entity.setLastName("test");
 
         studentViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
-        studentViewModel.insertStudent(db.student(), entity);
-        studentViewModel.getStudentById(db.student(), 1).observe(this, new Observer<List<StudentEntity>>() {
+        studentViewModel.insertStudent(db.studentDao(), entity);
+        studentViewModel.getStudentById(db.studentDao(), 1).observe(this, new Observer<List<StudentEntity>>() {
             @Override
             public void onChanged(@Nullable List<StudentEntity> studentEntities) {
-                if (studentEntities != null) Log.d("POND", String.valueOf(studentEntities.get(0).getFirstName()));
+                if (!studentEntities.isEmpty()) Log.d("POND", String.valueOf(studentEntities.get(0).getFirstName()));
                 else Log.d("POND", "error");
             }
         });
