@@ -1,7 +1,6 @@
 package com.ponthaitay.lifecycleactivity.googleio2017.room.javacode;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
@@ -15,9 +14,6 @@ import java.util.List;
 import io.reactivex.annotations.Nullable;
 
 public class MainRoomActivity extends BaseLifecycleActivity {
-
-    private StudentViewModel studentViewModel;
-    private LiveData<List<StudentEntity>> result;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -33,7 +29,7 @@ public class MainRoomActivity extends BaseLifecycleActivity {
         entity.setFirstName("Test");
         entity.setLastName("test");
 
-        studentViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
+        StudentViewModel studentViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
         studentViewModel.insertStudent(db.studentDao(), entity);
         studentViewModel.getStudentById(db.studentDao(), 1).observe(this, new Observer<List<StudentEntity>>() {
             @Override

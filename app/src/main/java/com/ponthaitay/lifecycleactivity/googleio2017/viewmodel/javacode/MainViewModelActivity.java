@@ -48,7 +48,7 @@ public class MainViewModelActivity extends BaseLifecycleActivity {
                         List<PermissionDeniedResponse> denyPermission = report.getDeniedPermissionResponses();
                         return denyPermission != null && !denyPermission.isEmpty();
                     }
-                });
+                }).check();
     }
 
     private void observableLocationViewModel() {

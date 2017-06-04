@@ -57,6 +57,6 @@ public class MainLiveDataActivity extends BaseLifecycleActivity {
                         List<PermissionDeniedResponse> denyPermission = report.getDeniedPermissionResponses();
                         return denyPermission != null && !denyPermission.isEmpty();
                     }
-                });
+                }).check();
     }
 }
